@@ -35,3 +35,7 @@ C:\Users\fic\Desktop\New-Time\TW\obj\Debug\netcoreapp3.0\TW.RazorTargetAssemblyI
 C:\Users\fic\Desktop\New-Time\TW\obj\Debug\netcoreapp3.0\TW.csproj.CopyComplete
 C:\Users\fic\Desktop\New-Time\TW\obj\Debug\netcoreapp3.0\TW.dll
 C:\Users\fic\Desktop\New-Time\TW\obj\Debug\netcoreapp3.0\TW.pdb
+C:\Users\fic\Desktop\New-Time\TW\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\fic\Desktop\New-Time\TW\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\fic\Desktop\New-Time\TW\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\fic\Desktop\New-Time\TW\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll

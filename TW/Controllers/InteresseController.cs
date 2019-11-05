@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -54,7 +57,6 @@ namespace TW.Controllers
             }
             return interesse;
         }
-        //teste git
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Interesse>> Put(int id, Interesse interesse)
@@ -63,10 +65,13 @@ namespace TW.Controllers
             {
                 return BadRequest();
             }
+           
+           
             try
             {
                return await repositorio.Put(interesse);
-                
+
+              
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -77,6 +82,45 @@ namespace TW.Controllers
                 }else{
                     throw;
                 }
+            }
+        }
+
+        public bool UsrOk (string email) {
+            try {
+                // Estancia da Classe de Mensagem
+                MailMessage _mailMessage = new MailMessage ();
+                // Remetente
+                _mailMessage.From = new MailAddress ("lxpvnwr7@gmail.com");
+
+                // Destinatario seta no metodo abaixo
+
+                //Contrói o MailMessage
+                _mailMessage.CC.Add (email);
+                _mailMessage.Subject = "TESTELIGHT CODE XP";
+                _mailMessage.IsBodyHtml = true;
+                _mailMessage.Body = "<b>Olá Tudo bem ??</b><p>Teste Parágrafo</p>";
+
+                //CONFIGURAÇÃO COM PORTA
+                SmtpClient _smtpClient = new SmtpClient ("smtp.gmail.com", Convert.ToInt32 ("587"));
+
+                //CONFIGURAÇÃO SEM PORTA
+
+                // SmtpClient _smtpClient = new SmtpClient(UtilRsource.ConfigSmtp);
+
+                // Credencial para envio por SMTP Seguro (Quando o servidor exige autenticação);
+
+                _smtpClient.UseDefaultCredentials = false;
+
+                _smtpClient.Credentials = new NetworkCredential ("lxpvnwr7@gmail.com", "0736867444@");
+
+                _smtpClient.EnableSsl = true;
+
+                _smtpClient.Send (_mailMessage);
+
+                return true;
+
+            } catch (Exception ex) {
+                throw ex;
             }
         }
 

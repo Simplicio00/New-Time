@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TW.Infertaces;
@@ -17,7 +18,8 @@ namespace TW.Repositorios
         }
         public async Task<List<Interesse>> Get()
         {
-           return await context.Interesse.ToListAsync();
+           var resultado = context.Interesse.Include(cs => cs.IdClassificadoNavigation).Include(usr => usr.IdUsuarioNavigation).Where(i => i.Comprador == false && i.IdUsuario == 2).ToListAsync();
+           return await resultado;
         }
         public async Task<Interesse> Get(int id)
         {
@@ -29,9 +31,6 @@ namespace TW.Repositorios
             await context.SaveChangesAsync();
             return interesse;
         }
-
-
-
         public async Task<Interesse> Put(Interesse interesse)
         {
             context.Entry(interesse).State = EntityState.Modified;
